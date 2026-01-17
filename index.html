@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Official Product Page</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<style>
+:root {
+  --primary: #0f1c3f;
+  --accent: #64b5c4;
+  --highlight: #f4a52e;
+  --bg: #f9f3e9;
+}
+
+body {
+  background: linear-gradient(180deg, #f9f3e9, #ffffff);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--primary);
+}
+
+.card {
+  animation: fadeUp .6s ease forwards;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.buy-btn {
+  background: var(--primary);
+  transition: all .3s ease;
+}
+.buy-btn:hover {
+  background: #582a47;
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 15px 30px rgba(0,0,0,.15);
+}
+</style>
+</head>
+
+<body>
+
+<header class="text-center py-12">
+  <h1 class="text-4xl md:text-5xl font-black tracking-tight">
+    Trusted <span class="text-[var(--accent)]">Product</span> Recommendation
+  </h1>
+  <p class="mt-4 text-gray-500 max-w-xl mx-auto">
+    You are viewing an official product page. Click below to continue securely on Amazon.
+  </p>
+</header>
+
+<main class="max-w-lg mx-auto px-6 pb-24">
+  <div class="card bg-white rounded-[3rem] shadow-2xl p-12 text-center hover:shadow-3xl transition-shadow">
+
+    <div class="w-24 h-24 mx-auto mb-8 flex items-center justify-center rounded-2xl
+                bg-[var(--highlight)]/10 text-[var(--highlight)]">
+      <i data-lucide="shopping-bag" class="w-12 h-12"></i>
+    </div>
+
+    <h2 id="productName" class="text-3xl font-black mb-3 leading-tight">
+      Recommended Product
+    </h2>
+
+    <p class="text-gray-500 mb-10 leading-relaxed">
+      Carefully selected based on quality, popularity, and value.
+    </p>
+
+    <a id="buyLink"
+       href="#"
+       target="_blank"
+       rel="nofollow noopener"
+       class="buy-btn flex items-center justify-center gap-3 text-white py-6
+              rounded-2xl font-extrabold text-xl shadow-xl">
+      <i data-lucide="external-link" class="w-6 h-6 text-[var(--accent)]"></i>
+      View on Amazon
+    </a>
+
+    <div class="mt-12 pt-6 border-t text-xs text-gray-400 uppercase tracking-widest space-y-2">
+      <p>✔ Secure checkout on Amazon</p>
+      <p>✔ No extra charges</p>
+      <p>✔ Fast delivery options</p>
+    </div>
+
+  </div>
+</main>
+
+<footer class="text-center text-xs text-gray-400 pb-6">
+  This page may contain affiliate links.
+</footer>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const product = params.get("name");
+const link = params.get("link");
+
+if (product) {
+  document.getElementById("productName").innerText = decodeURIComponent(product);
+}
+if (link) {
+  document.getElementById("buyLink").href = decodeURIComponent(link);
+}
+
+lucide.createIcons();
+</script>
+
+</body>
+</html>
+
+
+
+
